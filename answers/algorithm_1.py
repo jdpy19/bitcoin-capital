@@ -1,6 +1,7 @@
 import sys
 import random
 import itertools
+import time
 
 def generate_input(length, n=0):
   x = list(f'{random.randint(0, 2**length - 1):08b}')
@@ -12,18 +13,20 @@ def generate_input(length, n=0):
 def generate_combinations(input_str):
   input_list = list(input_str)
   indices = [i for i, x in enumerate(input_list) if x == 'X']
-  for combo in itertools.product([0, 1], repeat=len(indices)):
-    print_result(input_list, zip(indices, combo))
+  set_result(input_list, indices, 0, '0')
+  set_result(input_list, indices, 0, '1')
     
-
-def print_result(input_list, iterator):
-  for (i, x) in iterator:
-    input_list[i] = str(x)
-  print(f''.join(input_list))
+def set_result(input_list, indices, depth, value):
+  input_list[indices[depth]] = value
+  if depth == len(indices)-1:
+    print(''.join(input_list))
+  else:
+    set_result(input_list, indices, depth+1, '0')
+    set_result(input_list, indices, depth+1, '1')
   
 if __name__ == '__main__':
   if sys.argv[1] == 'random':
-    x = generate_input(10, 3)
+    x = generate_input(100, 20)
   else:
     x = sys.argv[1]
   print(f'Input: {x}')
