@@ -37,13 +37,6 @@ def validate_address(raw_value, testnet):
     # FIXME this does NOT work for Bech32 addresses which are *not*
     # formatted according to base58check !
     try:
-        # If bech32:
-            # b32decode_check(value)
-            # return None, value
-        # If testnet:
-            # Check prefix = b'\x6f'
-        # If mainnet: 
-            # prefix = b'\x00'
         b58decode_check(value)
         return None, value
     except ValueError as e:
