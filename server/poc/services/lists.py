@@ -1,5 +1,6 @@
 from ..database import DB
 from ..models import List
+from .address_listings import delete_address_listing_service
 
 
 def create_list_service(name=None, db_session=None):
@@ -12,5 +13,5 @@ def create_list_service(name=None, db_session=None):
 def delete_list_service(list, db_session=None):
     db_session = db_session or DB.session
     for listing in list.listings:
-        db_session.delete(listing)
+        delete_address_listing_service(listing, db_session=db_session)
     db_session.delete(list)

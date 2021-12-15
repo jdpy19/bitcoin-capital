@@ -24,3 +24,4 @@ def delete_address_listing_service(listing, db_session=None):
     if listing.is_sole_listing_for_address:
         db_session.delete(listing.address)
     db_session.delete(listing)
+    # db_session.commit()

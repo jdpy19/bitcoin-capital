@@ -23,10 +23,51 @@ Your response can be formatted as a simple text file or even an email.
     021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585
     ```
     * How many valid 2-of-3 P2SH multisig addresses can you create?
+    3*2*1=6
 
-    * How many [BIP-67](https://github.com/bitcoin/bips/blob/master/bip-0067.mediawiki) compliant 2-of-3 P2SH multisig addresses can you create?
+    In bitcoin core RPC,
+    ```addmultisigaddress 2 '["021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585","02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4","03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba"]'```
+
+    * How many [BIP-67](https://github.com/bitcoin/bips/blob/master/bip-0067.mediawiki) compliant 2-of-3 P2SH multisig addresses can you create? 1, by sorting and encoding the public keys a deterministic P2SH address is genereated for the same set of keys and required signature count.
 
     * Please share the addresses you generate along with your answers.
+    ```
+   [
+      {
+         "address": "bc1qs68ue7unjxs6xeaapf40308m7jpvxdajnxp3xs6sumr5z7s4mm4st3vn4q",
+         "redeemScript": "522102a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d42103938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba21021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd5158553ae",
+         "descriptor": "wsh(multi(2,[963842ef]02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4,[81a215d9]03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba,[4018c0dc]021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585))#4fkaky02"
+      },
+      {
+         "address": "bc1qsztks7awh2kyeqdaxzsryeyj4g2t7x0um6ace4ly7qt059hkpwwsu07zdg",
+         "redeemScript": "522103938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba2102a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d421021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd5158553ae",
+         "descriptor": "wsh(multi(2,[81a215d9]03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba,[963842ef]02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4,[4018c0dc]021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585))#sym42chl"
+      },
+      {
+         "address": "bc1qe0a0hl2gkxmwj324hy0sj0gsuyw6zr28ngy6lxwyuh0mzx328tyqplwhkc",
+         "redeemScript": "522103938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba21021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd515852102a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d453ae",
+         "descriptor": "wsh(multi(2,[81a215d9]03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba,[4018c0dc]021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585,[963842ef]02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4))#mjgn35d6"
+      },
+      {
+         "address": "bc1qacxzaz3w60ym4mmgylanhr3hm8dz07va3ckeexz5tn3mf937wams2yaag8",
+         "redeemScript": "522102a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d421021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd515852103938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba53ae",
+         "descriptor": "wsh(multi(2,[963842ef]02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4,[4018c0dc]021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585,[81a215d9]03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba))#c8a2kz7z"
+      },
+      {
+         "address": "bc1qndcy7tmztydlfjfnknnr6vjtmzp59zn9jkakjng4u9gekew3w0xssclgar",
+         "redeemScript": "5221021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd515852103938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba2102a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d453ae",
+         "descriptor": "wsh(multi(2,[4018c0dc]021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585,[81a215d9]03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba,[963842ef]02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4))#xy58zsqr"
+      },
+      {
+         "address": "bc1qykk2jns26vawc2nnqm08dzxs6hq7af4zj7te20xfn2grfgrst56q8t8ylx",
+         "redeemScript": "5221021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd515852102a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d42103938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba53ae",
+         "descriptor": "wsh(multi(2,[4018c0dc]021a049747120345fa9017fb42d8ff3d4fb1d2ef4c80546872c5da513babd51585,[963842ef]02a8513d9931896d5d3afc8063148db75d8851fd1fc41b1098ba2a6a766db563d4,[81a215d9]03938dd09bf3dd29ddf41f264858accfa40b330c98e0ed27caf77734fac00139ba))#quvke6tw"
+      }
+   ]
+   ```
+   * Resources:
+   1. https://en.bitcoin.it/wiki/Multi-signature
+   2. https://www.soroushjp.com/2014/12/20/bitcoin-multisig-the-hard-way-understanding-raw-multisignature-bitcoin-transactions/
 
 3. Given the following signature:
 
@@ -109,7 +150,8 @@ Your response can be formatted as a simple text file or even an email.
 	| EU     | yes | yes | no  |
 	| ASIA   | yes | no  | no  |
 	| LATAM  | yes | yes | yes |
-
+   
+   https://lucid.app/lucidchart/64446463-7c5a-4633-b8cf-39b78fd714bd/edit?beaconFlowId=4D1ED3D290B19E53&invitationId=inv_c0408cf6-3407-488c-a74c-99fd32cd167a&page=0_0#
 
 ## Backend Application Development (Python, Flask, SQLAlchemy)
 
