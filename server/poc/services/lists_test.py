@@ -41,13 +41,42 @@ class TestDeleteListService:
         delete_list_service(self.list, db_session=self.db_session)
 
         delete_call_args = self.db_session.delete.call_args_list
-        assert len(delete_call_args) == 3
 
-        assert delete_call_args[0][0] == (listing1,)
+        for a in delete_call_args:
+            print(a)
+
+        assert len(delete_call_args) == 5
+
+        assert delete_call_args[0][0] == (listing1.address,)
         assert delete_call_args[0][1] == {}
 
-        assert delete_call_args[1][0] == (listing2,)
+        assert delete_call_args[1][0] == (listing1,)
+        assert delete_call_args[0][1] == {}
+
+        assert delete_call_args[2][0] == (listing2.address,)
+        assert delete_call_args[0][1] == {}
+
+        assert delete_call_args[3][0] == (listing2,)
         assert delete_call_args[1][1] == {}
 
-        assert delete_call_args[2][0] == (self.list,)
-        assert delete_call_args[2][1] == {}
+        assert delete_call_args[4][0] == (self.list,)
+        assert delete_call_args[4][1] == {}
+
+    def test_deleting_with_listing_with_persistent_address(self):
+        self.list2 = MagicMock()
+        self.address1 = MagicMock()
+        
+        self.list.addresses = [self.address1]
+        self.list2.addresses = [self.address1]
+
+        delete_list_service(self.list, db_session=self.db_session)
+
+        delete_call_args = self.db_session.delete.call_args_list
+
+        for a in delete_call_args:
+            print(a)
+
+        assert len(delete_call_args) == 1
+
+        assert delete_call_args[0][0] == (self.list,)
+        assert delete_call_args[0][1] == {}

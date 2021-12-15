@@ -12,6 +12,7 @@ flask-cors = "*"
 alembic = "*"
 flask-migrate = "*"
 base58 = "*"
+buidl = "*"
 
 [dev-packages]
 pytest = '6.2.4'

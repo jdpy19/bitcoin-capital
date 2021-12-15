@@ -164,8 +164,12 @@ Your response can be formatted as a simple text file or even an email.
 3. Provide a PR review for [this PR](./prs/PR-2.bugfix-POC-3.diff)
    solving [this bug](./jira/POC-3.md).
 
-4. What makes a good API?
-
+   ### Comments
+   * server/poc/addresses.py: Be specific with imports instead of importing entire library
+      from buidl.script import * -> from buidl.script import address_to_script_pubkey
+   * We are adding a new dependency, is the new dependency safe? Do we trust it? 
+   * Need to add a tests for coverage across testnet, mainnet by P2WPKH, P2WSH
+   * Keep diffs small, only relevant changes
 
 ## Frontend Application Development (JavaScript, React)
 
@@ -357,7 +361,7 @@ Your response can be formatted as a simple text file or even an email.
    possible combinations, your program shouldn’t crash (or hang) on an
    input with many Xs. The order of your output doesn’t matter.
 
-   What is the big O notation for your program?
+   What is the big O notation for your program? O(2**n), where n is the number of X's in the input string.
 
 2. You have been given a gift card that is about to expire and you
    want to buy gifts for 2 friends.

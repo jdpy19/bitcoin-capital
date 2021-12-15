@@ -86,6 +86,12 @@ class TestValidateAddress:
         assert error is None
         assert value == address
 
+    def test_bech32_address(self):
+        address = "bc1qms4wpag0pemty2nk4ahtw4tfs089e0g7yjn5sh"  # Unchained-owned address
+        error, value = validate_address(address, False)
+        assert error is None
+        assert value == address
+
     def test_testnet_address(self):
         address = "2NE1LH35XT4YrdnEebk5oKMmRpGiYcUvpNR"  # Unchained-owned address
         error, value = validate_address(address, True)

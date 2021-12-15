@@ -1,6 +1,5 @@
-from base58 import b58decode_check
 from .base import validate_string
-
+from buidl.script import *
 
 def validate_address_search_query(request):
     error, query = validate_string(request.args.get("q"), max_length=90, required=False)
@@ -37,7 +36,7 @@ def validate_address(raw_value, testnet):
     # FIXME this does NOT work for Bech32 addresses which are *not*
     # formatted according to base58check !
     try:
-        b58decode_check(value)
+        address_to_script_pubkey(value)
         return None, value
-    except ValueError as e:
+    except (TypeError, RuntimeError) as e:
         return "is not a valid bitcoin address.", None

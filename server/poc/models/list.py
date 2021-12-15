@@ -9,7 +9,7 @@ class List(DB.Model):
     id = DB.Column(DB.Integer, primary_key=True)
     name = DB.Column(DB.String(50), nullable=False, index=True, unique=True)
 
-    listings = DB.relationship("AddressListing", backref="list")
+    listings = DB.relationship("AddressListing", backref="list", cascade="delete")
     addresses = association_proxy("listings", "address")
 
     def has_address_with_value(self, value):
