@@ -150,8 +150,25 @@ Your response can be formatted as a simple text file or even an email.
 	| EU     | yes | yes | no  |
 	| ASIA   | yes | no  | no  |
 	| LATAM  | yes | yes | yes |
+
+   Entities;
+      Customer
+      Region
+      Product
+
+   Relationships:
+      Zero or more customers live in one and only one region
+      Zero or more products are available in one or more regions
+      Zero or more customers are eligible for zero or more products, if one and only one region is common
    
-   https://lucid.app/lucidchart/64446463-7c5a-4633-b8cf-39b78fd714bd/edit?beaconFlowId=4D1ED3D290B19E53&invitationId=inv_c0408cf6-3407-488c-a74c-99fd32cd167a&page=0_0#
+   ```
+   [Customer] >0----|| [Region] >|----0< [Product]
+       |                  -                |
+       |                  -                |
+       |                  |                |
+        >0---- <Eligibility> -----------|<
+   ```
+
 
 ## Backend Application Development (Python, Flask, SQLAlchemy)
 
